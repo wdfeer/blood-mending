@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.minecraft.enchantment.Enchantment
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.enchantment.EnchantmentTarget
+import net.minecraft.enchantment.MendingEnchantment
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.damage.DamageTypes
@@ -64,7 +65,7 @@ class BloodMending() : Enchantment(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE,
             repair = min(repair, stack.maxDamage - 1)
 
             if (stack.damage >= repair) {
-                player.damage(DamageSource(DamageTypeHelper.getRegistryEntry(world, DamageTypes.MAGIC), player), 1f)
+                player.damage(DamageSource(DamageTypeHelper.getRegistryEntry(world, DamageTypes.MAGIC)), 1f)
                 player.yaw = player.headYaw
                 stack.damage -= repair
             }
@@ -81,5 +82,9 @@ class BloodMending() : Enchantment(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE,
 
     override fun getMaxLevel(): Int {
         return 3
+    }
+
+    override fun canAccept(other: Enchantment?): Boolean {
+        return other !is MendingEnchantment
     }
 }
