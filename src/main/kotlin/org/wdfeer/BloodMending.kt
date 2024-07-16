@@ -66,25 +66,22 @@ class BloodMending() : Enchantment(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE,
 
             if (stack.damage >= repair) {
                 player.damage(DamageSource(DamageTypeHelper.getRegistryEntry(world, DamageTypes.MAGIC)), 1f)
-                player.yaw = player.headYaw
                 stack.damage -= repair
             }
         }
     }
 
-    override fun getMinPower(level: Int): Int {
-        return 1 + level * 6
-    }
+    override fun getMinPower(level: Int): Int = level * 8
 
-    override fun getMaxPower(level: Int): Int {
-        return getMinPower(level) + 10
-    }
+    override fun getMaxPower(level: Int): Int = 50
 
-    override fun getMaxLevel(): Int {
-        return 3
-    }
+    override fun getMaxLevel(): Int = 3
 
     override fun canAccept(other: Enchantment?): Boolean {
-        return other !is MendingEnchantment
+        return other !is MendingEnchantment && other !is BloodMending
+    }
+
+    override fun isAcceptableItem(stack: ItemStack?): Boolean {
+        return (stack?.isDamageable ?: true) && super.isAcceptableItem(stack)
     }
 }
