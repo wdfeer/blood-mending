@@ -17,7 +17,7 @@
 	"entrypoints": {
 		"main": [
 			{
-				"value": "org.wdfeer.BloodMending",
+				"value": "org.wdfeer.TheMod",
 				"adapter": "kotlin"
 			}
 		],
