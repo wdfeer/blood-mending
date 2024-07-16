@@ -15,6 +15,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Identifier
 import org.wdfeer.TheMod.MOD_ID
 import org.wdfeer.util.DamageTypeHelper
+import kotlin.math.min
 
 class BloodMending() : Enchantment(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE, EquipmentSlot.entries.toTypedArray()) {
     companion object {
@@ -59,11 +60,14 @@ class BloodMending() : Enchantment(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE,
                 3 -> repair = 50
             }
 
-            if (stack.damage < repair) return
+            // Account for items with max durability < repair
+            repair = min(repair, stack.maxDamage - 1)
 
-            player.damage(DamageSource(DamageTypeHelper.getRegistryEntry(world, DamageTypes.MAGIC), player), 1f)
-            player.yaw = player.headYaw
-            stack.damage -= repair
+            if (stack.damage > repair) {
+                player.damage(DamageSource(DamageTypeHelper.getRegistryEntry(world, DamageTypes.MAGIC), player), 1f)
+                player.yaw = player.headYaw
+                stack.damage -= repair
+            }
         }
     }
 
