@@ -20,21 +20,8 @@
 				"value": "org.wdfeer.TheMod",
 				"adapter": "kotlin"
 			}
-		],
-		"client": [
-			{
-				"value": "org.wdfeer.BloodMendingClient",
-				"adapter": "kotlin"
-			}
 		]
 	},
-	"mixins": [
-		"blood_mending.mixins.json",
-		{
-			"config": "blood_mending.client.mixins.json",
-			"environment": "client"
-		}
-	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.20.1",
