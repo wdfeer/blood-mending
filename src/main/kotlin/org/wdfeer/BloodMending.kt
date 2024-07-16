@@ -31,7 +31,7 @@ class BloodMending() : Enchantment(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE,
                 if (!canBloodMend(player)) continue
 
                 val inventory = player.inventory
-                for (i in 0..inventory.size()){
+                for (i in 0 until inventory.size()){
                     val stack = inventory.getStack(i)
                     val bloodMending: Int = getBloodMending(stack)
                     if (bloodMending > 0){
