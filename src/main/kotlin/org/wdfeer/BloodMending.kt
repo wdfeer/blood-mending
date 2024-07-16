@@ -41,7 +41,7 @@ class BloodMending() : Enchantment(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE,
             }
         }
 
-        private fun canBloodMend(player: ServerPlayerEntity): Boolean = player.health + 0.1f >= player.maxHealth && player.canTakeDamage()
+        private fun canBloodMend(player: ServerPlayerEntity): Boolean = player.health > 1 && player.health >= player.maxHealth / 2f && player.canTakeDamage()
 
         private fun getBloodMending(stack: ItemStack): Int {
             if (!stack.hasEnchantments()) return 0
