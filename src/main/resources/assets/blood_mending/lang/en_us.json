@@ -1,3 +1,4 @@
 {
-  "enchantment.blood_mending.blood_mending": "Blood Mending"
+  "enchantment.blood_mending.blood_mending": "Blood Mending",
+  "enchantment.blood_mending.blood_mending.desc": "Tool repairs itself by damaging the user once a durability threshhold has been reached."
 }
