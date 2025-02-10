@@ -8,7 +8,7 @@ object TheMod : ModInitializer {
     private val logger = LoggerFactory.getLogger(MOD_ID)
 
 	override fun onInitialize() {
-		BloodMending.initialize()
-		logger.info("BloodMending initialized!")
+		BloodMending
+		logger.info("Blood Mending initialized!")
 	}
 }

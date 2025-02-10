@@ -1,4 +1,4 @@
-package org.wdfeer.util
+package org.wdfeer
 
 import net.minecraft.entity.damage.DamageType
 import net.minecraft.registry.RegistryKey
